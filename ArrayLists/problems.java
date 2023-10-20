@@ -1,4 +1,7 @@
+package ArrayList;
+
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 
 public class ArrayList_init {
@@ -129,4 +132,27 @@ public class ArrayList_init {
         return result;
     }
 
+    public static void occurences(ArrayList<Integer> arr) {
+        int max = 0;
+        int element = 0;
+
+        for(int i = 0; i < arr.size(); i++) {
+            int count = 1;
+            for(int j = i + 1; j < arr.size(); j++) {
+                if(Objects.equals(arr.get(i), arr.get(j))) {
+                    count++;
+                    element = arr.get(j);
+                }
+            }
+
+            if(count > max) {
+                max = count;
+            }
+        }
+
+        System.out.println("Element " + element + " has occured " + max + " times");
+    }
+
+
 }
+

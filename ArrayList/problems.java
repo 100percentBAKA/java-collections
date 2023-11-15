@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 
-public class ArrayList_init {
+public class Problems {
     static ArrayList<Integer> arr_1 = new ArrayList<>();
     static ArrayList<Integer> arr_2 = new ArrayList<>();
 

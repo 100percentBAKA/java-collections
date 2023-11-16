@@ -19,7 +19,6 @@ ArrayList<String> arr = new ArrayList<> ();
 ## Important Method in ArrayList in Java
 
 - **add(E element)**: Adds an element to the end of the ArrayList.
-
 - **add(int index, E element)**: Inserts an element at the specified index in the ArrayList.
 - **subList(int fromIndex, int toIndex)**: returns a portion of the ArrayList between the specified fromIndex (inclusive) and toIndex (exclusive)
 - **get(int index)**: Retrieves the element at the specified index.

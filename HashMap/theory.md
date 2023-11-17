@@ -124,7 +124,7 @@
     Output: false
 ```
 
-## Subarray Sum Equals K (non continuous)
+## Subarray Sum Equals K (continuous)
 
 ```java
     public int subarraySum(int[] nums, int k) {

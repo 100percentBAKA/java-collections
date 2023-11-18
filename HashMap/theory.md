@@ -112,6 +112,11 @@
 
         return true;
     }
+
+    ---------------------
+    Time complexity: O(N)  N --> length of the pattern
+    Space complexity: O(M) M --> number of unique words
+    ---------------------
 ```
 
 ```java
@@ -146,4 +151,40 @@
 
         return count;
     }
+
+    ---------------------
+    Time complexity: O(N)
+    Space complexity: O(N)
+    ---------------------
+```
+
+## Longest Subarray (Length) with equal no of 0s and 1s
+
+```java
+    public static int longestSubarrayWith0and1 (Integer[] arr) {
+        int currentSum = 0;
+        int maxLength = 0;
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for(int i = 0; i < arr.length; i++) {
+            currentSum += (arr[i] == 0) ? -1 : 1;
+
+            if(map.containsKey(currentSum))
+            {
+                maxLength = Math.max(maxLength, i - map.get(currentSum));
+            }
+            else {
+                map.put(currentSum, i);
+            }
+        }
+
+        return maxLength;
+    }
+
+    ---------------------
+    Time complexity: O(N)
+    Space complexity: O(N)
+    ---------------------
+
 ```

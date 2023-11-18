@@ -132,24 +132,81 @@
 ## Subarray Sum Equals K (continuous)
 
 ```java
-    public int subarraySum(int[] nums, int k) {
-        int count = 0;
-        int sum = 0;
+    public static void displaySubArray(Integer[] arr, int start, int end) {
+        for(int i = start; i <= end; i++) {
+            System.out.print(arr[i]);
+        }
+        System.out.println();
+    }
 
-        Map<Integer, Integer> sumCountMap = new HashMap<>();
-        sumCountMap.put(0, 1);
+    public static void subarraySumK(Integer[] arr, int sum) {
+        int currentSum = 0;
+        int start = 0;
+        int end = -1; // if end == -1, sub array not found
 
-        for (int num : nums) {
-            sum += num;
+        HashMap<Integer, Integer> map = new HashMap<>();
 
-            if (sumCountMap.containsKey(sum - k)) {
-                count += sumCountMap.get(sum - k);
+        for(int i = 0; i < arr.length; i++) {
+            currentSum += arr[i];
+
+            if(currentSum == sum) {
+                end = i;
+                displaySubArray(arr, start, end);
             }
 
-            sumCountMap.put(sum, sumCountMap.getOrDefault(sum, 0) + 1);
+            int diff = currentSum - sum;
+
+            if(map.containsKey(diff)) {
+                start = map.get(diff) + 1;
+                end = i;
+                displaySubArray(arr, start, end);
+            }
+
+//            if(!map.containsKey(currentSum)) {
+//                map.put(currentSum, i);
+//            }
+        // The above condition is useful when there are negative integers in the arr
+
+            map.put(currentSum, i);
         }
 
-        return count;
+        if(end == -1) {
+            System.out.println("No such SubArray");
+        }
+    }
+```
+
+## LOngest Subarray Sum Equals K (continuous)
+
+```java
+    public static int longestSubarraySumK(Integer[] arr, int sum) {
+        int maxLength = 0;
+        int currentSum = 0;
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for(int i = 0; i < arr.length; i++) {
+            currentSum += arr[i];
+
+            if(currentSum == sum) {
+                maxLength = i + 1; // i is 0 indexed
+            }
+
+            int diff = currentSum - sum;
+            if(map.containsKey(diff)) {
+                maxLength = Math.max(maxLength, i - map.get(diff));
+            }
+
+//            if(!map.containsKey(currentSum)) {
+//                map.put(currentSum, i);
+//            }
+
+            // The above condition is useful when there are negative integers in the arr
+
+            map.put(currentSum, i);
+        }
+
+        return maxLength;
     }
 
     ---------------------
